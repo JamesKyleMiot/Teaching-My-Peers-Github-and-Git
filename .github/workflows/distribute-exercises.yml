@@ -1,0 +1,62 @@
+name: Distribute Exercise to All Peers
+
+on:
+  push:
+    branches:
+      - exercises
+    paths:
+      - 'exercises/**'
+
+jobs:
+  distribute:
+    name: Distribute to peer branches
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout full repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "Exercise Bot"
+          git config user.email "bot@github.com"
+
+      - name: Distribute to all learning branches
+        run: |
+          BRANCHES=("amper-learning" "apenas-learning" "miot-learning" "nelson-learning" "perez-learning" "raven-learning" "silva-learning")
+          SUCCESS=0
+          FAIL=0
+
+          for BRANCH in "${BRANCHES[@]}"; do
+            echo ""
+            echo "══════════════════════════════════════"
+            echo "📦 Distributing to $BRANCH"
+            echo "══════════════════════════════════════"
+
+            git checkout "$BRANCH"
+
+            if git merge origin/exercises --no-edit -m "📝 New exercise distributed from exercises branch"; then
+              git push origin "$BRANCH"
+              echo "✅ $BRANCH — updated successfully"
+              SUCCESS=$((SUCCESS + 1))
+            else
+              echo "⚠️ $BRANCH — merge conflict, skipping"
+              git merge --abort
+              FAIL=$((FAIL + 1))
+            fi
+          done
+
+          echo ""
+          echo "══════════════════════════════════════"
+          echo "📊 DISTRIBUTION SUMMARY"
+          echo "══════════════════════════════════════"
+          echo "✅ Succeeded: $SUCCESS / ${#BRANCHES[@]}"
+          if [ $FAIL -gt 0 ]; then
+            echo "⚠️ Failed: $FAIL (check logs above)"
+            exit 1
+          fi
+          echo "🎉 All branches updated!"
