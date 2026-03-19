@@ -91,15 +91,15 @@ The entire learning process follows a cycle that mirrors real-world software dev
 │                        THE TRAINING CYCLE                           │
 │                                                                     │
 │   ① Jan pushes a Java problem/buggy code to your branch             │
-│                          ↓                                          │
+│                          ↓                                           │
 │   ② You pull the latest changes from your branch                    │
-│                          ↓                                          │
+│                          ↓                                           │
 │   ③ You read, understand, and solve the problem in your IDE         │
-│                          ↓                                          │
+│                          ↓                                           │
 │   ④ You stage, commit with a descriptive message, and push          │
-│                          ↓                                          │
+│                          ↓                                           │
 │   ⑤ Jan reviews your commit and gives feedback                      │
-│                          ↓                                          │
+│                          ↓                                           │
 │   ⑥ Repeat. Each cycle builds your Git muscle memory.               │
 └─────────────────────────────────────────────────────────────────────┘
 ```
