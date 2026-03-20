@@ -7,6 +7,11 @@ on:
   pull_request:
     branches:
       - '*-learning'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to check'
+        required: false
 
 jobs:
   compile-java:
