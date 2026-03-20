@@ -1,18 +1,18 @@
 package exercises.exercise01_naming;
 
-public class favoritEmovie {
+public class FavoriteMovie {
     //New excercise make sure to synx it first
 
     //Basic fixing
-    public static void rnain (String[] args) {
-        String name = "My Name";
+    public static void main (String[] args) {
+        String name = "Raven";
 
-        int age = "0";
+        int age = 21;
 
-        boolean gender = 0;
+        boolean gender = true;
 
-        System.out.println(Name);
+        System.out.println(name);
         System.out.println(age);
-        System.out.println(gender);
+        System.out.println("Gender Male: "gender);
     }
 }
