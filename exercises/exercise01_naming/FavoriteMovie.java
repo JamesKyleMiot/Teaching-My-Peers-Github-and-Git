@@ -13,6 +13,6 @@ public class FavoriteMovie {
 
         System.out.println(name);
         System.out.println(age);
-        System.out.println("Gender Male: "gender);
+        System.out.println("Gender Male: " + gender);
     }
 }
