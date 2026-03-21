@@ -4,8 +4,6 @@
 
 <p align="center">
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch={{BRANCH_NAME}}" alt="Build Status"/>
-  <img src="https://img.shields.io/badge/Branch-{{BRANCH_NAME}}-58A6FF?style=flat-square&logo=git&logoColor=white" alt="Branch"/>
-  <img src="https://img.shields.io/badge/Last_Updated-{{TIMESTAMP_BADGE}}-2EA44F?style=flat-square&logo=clock&logoColor=white" alt="Updated"/>
 </p>
 
 ---
