@@ -218,8 +218,24 @@ jobs:
           fi
 
           EXERCISE_SUMMARY=""
+          PROGRESS_BAR=""
           if [ $COUNT -gt 0 ]; then
-            EXERCISE_SUMMARY="**${PASSED}/${TOTAL} exercises compiling ✅**"
+            EXERCISE_SUMMARY="**${PASSED}/${TOTAL} exercises compiling**"
+
+            # Build 10-slot unicode progress bar
+            FILLED=0
+            if [ $TOTAL -gt 0 ]; then
+              FILLED=$(( (PASSED * 10 + TOTAL - 1) / TOTAL ))  # ceiling division
+            fi
+            EMPTY=$((10 - FILLED))
+            BAR=""
+            for i in $(seq 1 $FILLED); do BAR="${BAR}█"; done
+            for i in $(seq 1 $EMPTY);  do BAR="${BAR}░"; done
+            if [ $PASSED -eq $TOTAL ] && [ $TOTAL -gt 0 ]; then
+              PROGRESS_BAR="\`${BAR}\` **${PASSED}/${TOTAL}** 🎉 All passing!"
+            else
+              PROGRESS_BAR="\`${BAR}\` **${PASSED}/${TOTAL}** exercises passing"
+            fi
           fi
 
           if [ $COUNT -eq 0 ]; then
@@ -241,6 +257,7 @@ jobs:
           status_section = """$STATUS_SECTION"""
           exercise_table = """$EXERCISE_TABLE"""
           exercise_summary = """$EXERCISE_SUMMARY"""
+          progress_bar = """$PROGRESS_BAR"""
 
           readme = template
           readme = readme.replace("{{STUDENT_NAME}}", "$STUDENT_NAME")
@@ -249,6 +266,7 @@ jobs:
           readme = readme.replace("{{STATUS_SECTION}}", status_section.strip())
           readme = readme.replace("{{EXERCISE_TABLE}}", exercise_table.strip())
           readme = readme.replace("{{EXERCISE_SUMMARY}}", exercise_summary.strip())
+          readme = readme.replace("{{PROGRESS_BAR}}", progress_bar.strip())
 
           with open("README.md", "w") as f:
               f.write(readme)

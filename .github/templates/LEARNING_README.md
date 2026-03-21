@@ -6,6 +6,8 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch={{BRANCH_NAME}}" alt="Build Status"/>
 </p>
 
+<p align="center">{{PROGRESS_BAR}}</p>
+
 ---
 
 {{STATUS_SECTION}}
