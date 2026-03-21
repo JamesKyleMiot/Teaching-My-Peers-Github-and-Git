@@ -1,7 +1,7 @@
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1F6FEB&height=180&section=header&text=Teaching%20My%20Peers%20Git%20%26%20GitHub&fontSize=36&fontColor=FFFFFF&fontAlignY=35&desc=No%20More%20Flash%20Drives.%20We%20Code%20Like%20Pros.&descSize=16&descColor=B0C4DE&descAlignY=55" width="100%"/>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Built+by+Students%2C+for+Students.;Learn+Git+by+Actually+Using+It.;Fork+→+Solve+→+PR+→+Repeat.;The+Codebase+Is+the+Classroom." alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Built+by+Students%2C+for+Students.;Learn+Git+by+Actually+Using+It.;Fork+%E2%86%92+Solve+%E2%86%92+PR+%E2%86%92+Repeat.;The+Codebase+Is+the+Classroom." alt="Typing SVG" />
 </p>
 
 <p align="center">
