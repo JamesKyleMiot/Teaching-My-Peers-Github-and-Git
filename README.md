@@ -8,8 +8,6 @@
 
 <p align="center">`██████████` **2/2** 🎉 All passing!</p>
 
-<p align="center"><em>🔥 **2-day streak** — you're building momentum!</em></p>
-
 ---
 
 ## ✅ Great Job, Raven! All Exercises Compile!
