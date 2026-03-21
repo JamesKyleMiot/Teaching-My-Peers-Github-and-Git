@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/branches">
-    <img src="https://img.shields.io/badge/Peer_Branches-7-blue?style=for-the-badge&logo=git&logoColor=white" alt="Branches"/>
+    <img src="https://img.shields.io/badge/Peer_Branches-9-blue?style=for-the-badge&logo=git&logoColor=white" alt="Branches"/>
   </a>
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git">
     <img src="https://img.shields.io/badge/Language-Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
@@ -73,10 +73,12 @@ Each peer has their own **personal branch**. The badges below show **live CI sta
 | `main` | **Jan Rhian Angulo** | 🧑‍🏫 Training Lead | — |
 | `amper-learning` | **Amper** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=amper-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Aamper-learning) |
 | `apenas-learning` | **Apenas** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=apenas-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Aapenas-learning) |
+| `ericson-learning` | **Ericson** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=ericson-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Aericson-learning) |
 | `miot-learning` | **Miot** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=miot-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Amiot-learning) |
 | `nelson-learning` | **Nelson** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=nelson-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Anelson-learning) |
 | `perez-learning` | **Perez** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=perez-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Aperez-learning) |
 | `raven-learning` | **Raven** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=raven-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Araven-learning) |
+| `remart-learning` | **Remart** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=remart-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Aremart-learning) |
 | `silva-learning` | **Silva** | 🧑‍💻 Trainee | [![Build](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=silva-learning)](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml?query=branch%3Asilva-learning) |
 
 > **📌 Rule**: You only work on **your** branch. Never commit directly to `main`.
