@@ -86,28 +86,6 @@ Each peer has their own **personal branch**. The badges below show **live CI sta
 
 > **📌 Rule**: You only work on **your** branch. Never commit directly to `main`.
 
----
-
-## 🏆 Leaderboard
-
-<!-- LEADERBOARD_START -->
-| Rank | Peer | Branch | 🔥 Streak | ✅ Progress | Status |
-|:---:|:---|:---|:---:|:---:|:---|
-| 🥇 | **Amper** | `amper-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 🥈 | **Apenas** | `apenas-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 🥉 | **Ericson** | `ericson-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 4️⃣ | **Miot** | `miot-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 5️⃣ | **Nelson** | `nelson-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
-| 6️⃣ | **Perez** | `perez-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 7️⃣ | **Raven** | `raven-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 8️⃣ | **Remart** | `remart-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-| 9️⃣ | **Silva** | `silva-learning` | 🔥 2d | `░░░░░` 0/2 | 🆕 Getting started |
-
-<sub>🤖 Auto-updated by GitHub Actions · Last run: 2026-03-21 14:38 UTC</sub>
-
-<!-- LEADERBOARD_END -->
-
----
 
 ## ⚙️ How It Works — The Full Pipeline
 
