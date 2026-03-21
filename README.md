@@ -91,7 +91,20 @@ Each peer has their own **personal branch**. The badges below show **live CI sta
 ## 🏆 Leaderboard
 
 <!-- LEADERBOARD_START -->
-*The leaderboard will appear here after the first nightly run, or trigger it manually from the [Actions tab](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/leaderboard.yml).*
+| Rank | Peer | Branch | 🔥 Streak | ✅ Progress | Status |
+|:---:|:---|:---|:---:|:---:|:---|
+| 🥇 | **Amper** | `amper-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 🥈 | **Apenas** | `apenas-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 🥉 | **Ericson** | `ericson-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 4️⃣ | **Miot** | `miot-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 5️⃣ | **Nelson** | `nelson-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 6️⃣ | **Perez** | `perez-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 7️⃣ | **Raven** | `raven-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 8️⃣ | **Remart** | `remart-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+| 9️⃣ | **Silva** | `silva-learning` | 🔥 3d | `░░░░░` 0/2 | 🆕 Getting started |
+
+<sub>🤖 Auto-updated by GitHub Actions · Last run: 2026-03-21 14:32 UTC</sub>
+
 <!-- LEADERBOARD_END -->
 
 ---
