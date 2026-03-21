@@ -6,11 +6,11 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=silva-learning" alt="Build Status"/>
 </p>
 
-<p align="center">`░░░░░░░░░░` **0/2** exercises passing</p>
+<p align="center">`░░░░░░░░░░` **0/7** exercises passing</p>
 
 ---
 
-## ❌ Compilation Errors — 2/2 File(s) Failed
+## ❌ Compilation Errors — 7/7 File(s) Failed
 
 Don't worry — **errors are how we learn!** Here's what went wrong:
 
@@ -40,6 +40,52 @@ exercises/exercise01_naming/FavoriteMovie.java:14: error: cannot find symbol
   symbol:   variable Name
   location: class favoritEmovie
 4 errors
+```
+
+### `Variables.java`
+```
+exercises/exercise03_variables/Variables.java:7: error: incompatible types: String cannot be converted to int
+        int message = "Hello, Learning!";
+                      ^
+1 error
+```
+
+### `BasicMath.java`
+```
+exercises/exercise04_math/BasicMath.java:7: error: incompatible types: possible lossy conversion from double to int
+        int score = 5.5;
+                    ^
+1 error
+```
+
+### `Greeting.java`
+```
+exercises/exercise05_strings/Greeting.java:9: error: ')' expected
+        System.out.println("Hello, " firstName + " " + lastName);
+                                    ^
+exercises/exercise05_strings/Greeting.java:9: error: not a statement
+        System.out.println("Hello, " firstName + " " + lastName);
+                                                     ^
+exercises/exercise05_strings/Greeting.java:9: error: ';' expected
+        System.out.println("Hello, " firstName + " " + lastName);
+                                                               ^
+3 errors
+```
+
+### `AgeCheck.java`
+```
+exercises/exercise06_logic/AgeCheck.java:8: error: incompatible types: int cannot be converted to boolean
+        if (age = 18) {
+                ^
+1 error
+```
+
+### `Counter.java`
+```
+exercises/exercise07_loops/Counter.java:6: error: ';' expected
+        for (int i = 1; i <= 5 i++) {
+                              ^
+1 error
 ```
 
 > 🔗 **[Open the failing file in github.dev](https://github.dev/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise01_hello_world/HelloWorld.java)** — fix it right in your browser!
@@ -108,12 +154,17 @@ git push origin silva-learning
 
 ## 📋 Your Exercises
 
-**0/2 exercises compiling**
+**0/7 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
 | 1 | `exercises/exercise01_hello_world` | [HelloWorld.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise01_hello_world/HelloWorld.java) | ❌ |
 | 2 | `exercises/exercise01_naming` | [FavoriteMovie.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise01_naming/FavoriteMovie.java) | ❌ |
+| 3 | `exercises/exercise03_variables` | [Variables.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise03_variables/Variables.java) | ❌ |
+| 4 | `exercises/exercise04_math` | [BasicMath.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise04_math/BasicMath.java) | ❌ |
+| 5 | `exercises/exercise05_strings` | [Greeting.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise05_strings/Greeting.java) | ❌ |
+| 6 | `exercises/exercise06_logic` | [AgeCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise06_logic/AgeCheck.java) | ❌ |
+| 7 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise07_loops/Counter.java) | ❌ |
 
 ---
 
