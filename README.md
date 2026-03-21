@@ -1,19 +1,24 @@
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1F6FEB&height=180&section=header&text=Teaching%20My%20Peers%20Git%20%26%20GitHub&fontSize=36&fontColor=FFFFFF&fontAlignY=35&desc=No%20More%20Flash%20Drives.%20We%20Code%20Like%20Pros.&descSize=16&descColor=B0C4DE&descAlignY=55" width="100%"/>
+
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=58A6FF&center=true&vCenter=true&width=700&lines=Teaching+My+Peers+Git+%26+GitHub;No+More+Flash+Drives.+We+Code+Like+Pros.;Built+by+Students%2C+for+Students." alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=600&lines=Built+by+Students%2C+for+Students.;Learn+Git+by+Actually+Using+It.;Fork+→+Solve+→+PR+→+Repeat.;The+Codebase+Is+the+Classroom." alt="Typing SVG" />
 </p>
 
 <p align="center">
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/branches">
-    <img src="https://img.shields.io/badge/Peer_Branches-9-blue?style=for-the-badge&logo=git&logoColor=white" alt="Branches"/>
+    <img src="https://img.shields.io/badge/Peer_Branches-9-58A6FF?style=for-the-badge&logo=git&logoColor=white" alt="Branches"/>
   </a>
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git">
     <img src="https://img.shields.io/badge/Language-Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white" alt="Java"/>
   </a>
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git">
-    <img src="https://img.shields.io/badge/Year-1st_Year_CS-green?style=for-the-badge&logo=graduationcap&logoColor=white" alt="1st Year"/>
+    <img src="https://img.shields.io/badge/Year-1st_Year_CS-2EA44F?style=for-the-badge&logo=graduationcap&logoColor=white" alt="1st Year"/>
   </a>
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions">
     <img src="https://img.shields.io/badge/CI-GitHub_Actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI"/>
+  </a>
+  <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/distribute-exercises.yml">
+    <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/distribute-exercises.yml/badge.svg" alt="Distribution Status"/>
   </a>
 </p>
 
@@ -21,13 +26,11 @@
 
 ## 🧭 What Is This?
 
-This repository is a **live training ground** where first-year Computer Science students learn **Git**, **GitHub**, and **real-world collaboration workflows**—by actually using them.
+A **live training ground** where first-year CS students learn **Git**, **GitHub**, and **real-world collaboration** — by actually using them. No slides. No lectures. Just code.
 
-Instead of lectures and slideshows, we learn by doing:
+> **I push small Java problems to each peer's branch → they fork, solve, open a Pull Request → GitHub Actions checks if it compiles → I review and merge.**
 
-> **I push small Java problems to each peer's personal branch → they fork, solve, open a Pull Request → GitHub Actions checks if it compiles → if it passes, I review and merge.**
-
-Every `git pull`, every `git commit`, every failed CI check is a lesson. The codebase is the classroom.
+Every `git pull`, every `git commit`, every failed CI check is a lesson. **The codebase is the classroom.**
 
 ---
 
@@ -37,11 +40,11 @@ Every `git pull`, every `git commit`, every failed CI check is a lesson. The cod
 <tr>
 <td width="60%">
 
-Most first-year students collaborate through **flash drives, Messenger, and copy-pasting code**. That works—until it doesn't. Overwritten files, lost progress, zero version history.
+Most first-year students collaborate through **flash drives, Messenger, and copy-pasting code**. That works — until it doesn't. Overwritten files, lost progress, zero version history.
 
 I'm **Jan Rhian Angulo**, a first-year student myself. Nobody told me to build this. No professor assigned it. I just saw my classmates struggling with the same problems I once had, and I decided to do something about it.
 
-**This is my dedication**: to train my peers in the tools that real software engineers use every single day, so that by the time we hit our stride, we're not playing catch-up—we're already ahead.
+**This is my dedication**: to train my peers in the tools that real software engineers use every single day, so that by the time we hit our stride, we're not playing catch-up — we're already ahead.
 
 If I can give them even a head start on version control and collaboration, that's a **brighter future** they didn't have to wait for.
 
@@ -87,30 +90,24 @@ Each peer has their own **personal branch**. The badges below show **live CI sta
 
 ## ⚙️ How It Works — The Full Pipeline
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                    THE COMPLETE TRAINING CYCLE                      │
-│                                                                     │
-│   ① Jan pushes a Java exercise to your branch                      │
-│                          ↓                                          │
-│   ② You FORK this repo to your own GitHub account                  │
-│                          ↓                                          │
-│   ③ You sync your fork, pull the exercise, and solve it            │
-│                          ↓                                          │
-│   ④ You push your solution to YOUR fork                            │
-│                          ↓                                          │
-│   ⑤ You open a PULL REQUEST from your fork → your branch here     │
-│                          ↓                                          │
-│   ⑥ GitHub Actions automatically checks if your code compiles     │
-│                          ↓                                          │
-│   ⑦ ❌ FAILS? Fix your code, push again. PR updates automatically │
-│      ✅ PASSES? Jan reviews your code and merges!                  │
-│                          ↓                                          │
-│   ⑧ README badges update — your branch shows green ✅              │
-└─────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart TD
+    A["🎯 Jan pushes an exercise to your branch"] --> B["🍴 You FORK this repo"]
+    B --> C["🔄 Sync your fork and pull the exercise"]
+    C --> D["💻 Solve the problem locally"]
+    D --> E["📤 Push your solution to YOUR fork"]
+    E --> F["📬 Open a PULL REQUEST"]
+    F --> G{"🤖 GitHub Actions\nchecks your code"}
+    G -->|"❌ Fails"| H["🔧 Fix and push again"]
+    H --> G
+    G -->|"✅ Passes"| I["🔍 Jan reviews and merges"]
+    I --> J["🟢 Badge turns green!"]
 ```
 
-### 🤖 What GitHub Actions Does
+<details>
+<summary><strong>🤖 What does GitHub Actions do behind the scenes?</strong> (click to expand)</summary>
+
+<br/>
 
 When you open a Pull Request or push to a `*-learning` branch, a **GitHub Actions bot** automatically:
 
@@ -124,13 +121,16 @@ When you open a Pull Request or push to a `*-learning` branch, a **GitHub Action
 
 You can see the live results in the **Actions tab** and on your Pull Request page.
 
+</details>
+
 ---
 
 ## 🍴 For Peers: Fork & Pull Request Guide
 
-This is the complete workflow you'll follow. It mirrors how real open-source developers work.
+<details open>
+<summary><strong>🔧 One-Time Setup</strong></summary>
 
-### One-Time Setup
+<br/>
 
 #### 1. Fork This Repository
 - Go to [this repo on GitHub](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git)
@@ -155,9 +155,12 @@ git checkout your-branch-name
 # Example: git checkout amper-learning
 ```
 
----
+</details>
 
-### Every Exercise (Repeat This)
+<details>
+<summary><strong>🔁 Every Exercise (Repeat This)</strong></summary>
+
+<br/>
 
 #### Step 1 · Sync Your Fork with the Latest Exercise
 ```bash
@@ -200,9 +203,11 @@ git push origin your-branch-name
 - ❌ **If it fails**: Click "Details" to see the error → fix your code → push again (the PR updates automatically)
 - ✅ **If it passes**: Jan will review and merge your PR
 
+</details>
+
 ---
 
-## 🚀 Getting Started (First-Time Setup)
+## 🚀 Getting Started
 
 ### Prerequisites
 
@@ -234,23 +239,24 @@ git config --global user.email "your-email@example.com"
 
 ## 📖 Learning Progression
 
-```
-Phase 1 — The Basics                    Phase 2 — Intermediate
-─────────────────────                   ─────────────────────────
-☑ Clone a repository                    ☐ Resolve merge conflicts
-☑ Checkout a branch                     ☐ Understand Git history (git log)
-☑ Pull changes                          ☐ Write proper commit messages
-☑ Stage and commit                      ☐ Create Pull Requests
-☑ Push to remote                        ☐ Read CI/CD check results
-☑ Fork a repository                     ☐ Review peer code on GitHub
-
-Phase 3 — Advanced (Future)
-─────────────────────────────
-☐ Branching strategies (feature branches)
-☐ GitHub Actions & CI/CD deep dive
-☐ Collaborative project development
-☐ Open source contribution workflow
-```
+| Phase | Skill | Status |
+|:---|:---|:---:|
+| **🟢 Phase 1 — Basics** | Clone a repository | ✅ |
+| | Checkout a branch | ✅ |
+| | Pull changes | ✅ |
+| | Stage and commit | ✅ |
+| | Push to remote | ✅ |
+| | Fork a repository | ✅ |
+| **🟡 Phase 2 — Intermediate** | Resolve merge conflicts | ⬜ |
+| | Understand Git history (`git log`) | ⬜ |
+| | Write proper commit messages | ⬜ |
+| | Create Pull Requests | ⬜ |
+| | Read CI/CD check results | ⬜ |
+| | Review peer code on GitHub | ⬜ |
+| **🔴 Phase 3 — Advanced** | Branching strategies (feature branches) | ⬜ |
+| | GitHub Actions & CI/CD deep dive | ⬜ |
+| | Collaborative project development | ⬜ |
+| | Open source contribution workflow | ⬜ |
 
 ---
 
@@ -274,13 +280,19 @@ Phase 3 — Advanced (Future)
 
 ## 🤝 Ground Rules
 
-1. **Pull before you code.** Always sync your fork to get the latest changes.
-2. **Stay on your branch.** Never touch `main` directly.
-3. **Commit small, commit often.** One fix = one commit. Don't bundle everything.
-4. **Write real commit messages.** Describe *what* you changed and *why*.
-5. **Check CI before asking for review.** If the check is red, fix it first.
-6. **Ask for help.** Everyone here is learning. There are no dumb questions.
-7. **Break things.** That's how you learn. Git can always undo your mistakes.
+> 🔄 **Pull before you code.** Always sync your fork to get the latest changes.
+
+> 🌿 **Stay on your branch.** Never touch `main` directly.
+
+> 📦 **Commit small, commit often.** One fix = one commit. Don't bundle everything.
+
+> ✍️ **Write real commit messages.** Describe *what* you changed and *why*.
+
+> 🚦 **Check CI before asking for review.** If the check is red, fix it first.
+
+> 🙋 **Ask for help.** Everyone here is learning. There are no dumb questions.
+
+> 💥 **Break things.** That's how you learn. Git can always undo your mistakes.
 
 ---
 
@@ -303,11 +315,11 @@ Phase 3 — Advanced (Future)
 - [x] Set up repository with personal branches for all peers
 - [x] Create GitHub Actions CI pipeline (auto-compile check)
 - [x] Add per-branch live build status badges to README
-- [ ] Push initial Java exercises (bug fixes)
+- [x] Push initial Java exercises (bug fixes)
+- [x] Set up branch protection rules
+- [x] Introduce Pull Requests and code review
 - [ ] Introduce feature-building exercises
 - [ ] Teach merge conflict resolution
-- [ ] Introduce Pull Requests and code review
-- [ ] Set up branch protection rules
 - [ ] Collaborative mini-project as final exercise
 
 ---
@@ -321,6 +333,8 @@ Phase 3 — Advanced (Future)
   — Jan Rhian Angulo
   <br/><br/>
   <a href="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git">
-    <img src="https://img.shields.io/badge/Let's_Learn_Together-🚀-blue?style=for-the-badge" alt="Let's Learn Together"/>
+    <img src="https://img.shields.io/badge/Let's_Learn_Together-🚀-58A6FF?style=for-the-badge" alt="Let's Learn Together"/>
   </a>
 </p>
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:58A6FF,100:1F6FEB&height=120&section=footer" width="100%"/>
