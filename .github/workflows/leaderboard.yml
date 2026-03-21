@@ -69,13 +69,17 @@ jobs:
 
             TOTAL=$(git ls-tree -r --name-only "origin/$BRANCH" 2>/dev/null | grep -c "exercises/.*\.java$" || echo "0")
 
-            # Calculate streak (look back up to 30 days)
+            # Calculate streak — only commits touching exercises/ count
             STREAK=0
             for i in $(seq 0 29); do
               CHECK_DATE=$(python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$i)).isoformat())")
-              DAY_COMMITS=$(git log "origin/$BRANCH" --oneline \
+              DAY_COMMITS=$(git log "origin/$BRANCH" --no-merges \
                 --after="${CHECK_DATE}T00:00:00Z" --before="${CHECK_DATE}T23:59:59Z" \
-                --perl-regexp --author="^(?!Exercise Bot)" 2>/dev/null | wc -l | tr -d ' ')
+                --format="%ae" \
+                -- exercises/ 2>/dev/null \
+                | grep -v "bot@github.com" \
+                | grep -v "^$" \
+                | wc -l | tr -d ' ')
               if [ "$DAY_COMMITS" -gt 0 ]; then
                 STREAK=$((STREAK + 1))
               elif [ $i -gt 0 ]; then
