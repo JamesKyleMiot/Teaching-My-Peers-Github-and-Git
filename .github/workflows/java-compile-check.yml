@@ -121,11 +121,32 @@ jobs:
           echo "📝 Generating README for $STUDENT_NAME on $BRANCH..."
           echo "   Result: $COMPILE_RESULT ($PASSED/$TOTAL passed)"
 
-          # ── Detect first-time student (no commits from student, only bot commits) ──
-          STUDENT_COMMITS=$(git log --oneline --author="Exercise Bot" --invert-grep 2>/dev/null | grep -v "^$" | wc -l | tr -d ' ')
-          IS_FIRST_TIME=false
-          if [ "$STUDENT_COMMITS" -eq 0 ]; then
-            IS_FIRST_TIME=true
+          # ── Streak calculation ──
+          STREAK=0
+          TODAY=$(date -u +%Y-%m-%d)
+          for i in $(seq 0 29); do
+            CHECK_DATE=$(date -u -d "$TODAY - $i days" +%Y-%m-%d 2>/dev/null || \
+                         python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$i)).isoformat())")
+            NEXT_DATE=$(date -u -d "$TODAY - $((i-1)) days" +%Y-%m-%d 2>/dev/null || \
+                        python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$((i-1)))).isoformat())")
+            DAY_COMMITS=$(git log --oneline \
+              --after="${CHECK_DATE}T00:00:00Z" --before="${CHECK_DATE}T23:59:59Z" \
+              --perl-regexp --author="^(?!Exercise Bot)" 2>/dev/null | wc -l | tr -d ' ')
+            if [ "$DAY_COMMITS" -gt 0 ]; then
+              STREAK=$((STREAK + 1))
+            elif [ $i -gt 0 ]; then
+              break
+            fi
+          done
+
+          if [ $STREAK -eq 0 ]; then
+            STREAK_TEXT="Start your streak! Push some code today 🚀"
+          elif [ $STREAK -eq 1 ]; then
+            STREAK_TEXT="🔥 1-day streak — keep it going!"
+          elif [ $STREAK -lt 7 ]; then
+            STREAK_TEXT="🔥 **${STREAK}-day streak** — you're building momentum!"
+          else
+            STREAK_TEXT="🔥 **${STREAK}-day streak** — YOU'RE ON FIRE! Incredible work!"
           fi
 
           # ── Build STATUS section ──
@@ -258,6 +279,7 @@ jobs:
           exercise_table = """$EXERCISE_TABLE"""
           exercise_summary = """$EXERCISE_SUMMARY"""
           progress_bar = """$PROGRESS_BAR"""
+          streak_text = """$STREAK_TEXT"""
 
           readme = template
           readme = readme.replace("{{STUDENT_NAME}}", "$STUDENT_NAME")
@@ -267,6 +289,7 @@ jobs:
           readme = readme.replace("{{EXERCISE_TABLE}}", exercise_table.strip())
           readme = readme.replace("{{EXERCISE_SUMMARY}}", exercise_summary.strip())
           readme = readme.replace("{{PROGRESS_BAR}}", progress_bar.strip())
+          readme = readme.replace("{{STREAK}}", streak_text.strip())
 
           with open("README.md", "w") as f:
               f.write(readme)
