@@ -88,6 +88,14 @@ Each peer has their own **personal branch**. The badges below show **live CI sta
 
 ---
 
+## 🏆 Leaderboard
+
+<!-- LEADERBOARD_START -->
+*The leaderboard will appear here after the first nightly run, or trigger it manually from the [Actions tab](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/leaderboard.yml).*
+<!-- LEADERBOARD_END -->
+
+---
+
 ## ⚙️ How It Works — The Full Pipeline
 
 ```mermaid
