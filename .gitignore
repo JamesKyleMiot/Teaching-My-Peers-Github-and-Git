@@ -13,5 +13,7 @@ target/
 .DS_Store
 Thumbs.db
 
+.env
+
 # Secrets
 .env
