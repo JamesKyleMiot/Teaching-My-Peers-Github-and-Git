@@ -6,6 +6,8 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=miot-learning" alt="Build Status"/>
 </p>
 
+<p align="center">`░░░░░░░░░░` **0/2** exercises passing</p>
+
 ---
 
 ## ❌ Compilation Errors — 2/2 File(s) Failed
@@ -106,7 +108,7 @@ git push origin miot-learning
 
 ## 📋 Your Exercises
 
-**0/2 exercises compiling ✅**
+**0/2 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
