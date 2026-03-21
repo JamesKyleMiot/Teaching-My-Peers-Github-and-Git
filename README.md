@@ -6,6 +6,8 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=raven-learning" alt="Build Status"/>
 </p>
 
+<p align="center">`██████████` **2/2** 🎉 All passing!</p>
+
 ---
 
 ## ✅ Great Job, Raven! All Exercises Compile!
@@ -81,7 +83,7 @@ git push origin raven-learning
 
 ## 📋 Your Exercises
 
-**2/2 exercises compiling ✅**
+**2/2 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
