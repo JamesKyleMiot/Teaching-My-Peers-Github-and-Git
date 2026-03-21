@@ -8,6 +8,8 @@
 
 <p align="center">{{PROGRESS_BAR}}</p>
 
+<p align="center"><em>{{STREAK}}</em></p>
+
 ---
 
 {{STATUS_SECTION}}
