@@ -8,15 +8,15 @@
 
 ---
 
-## ✅ Great Job! Your Code Compiles Perfectly!
+## ✅ Great Job, Perez! All Exercises Compile!
 
-> 🎉 **I'm so proud of you!** Your code compiled with zero errors.
+> 🎉 **I'm so proud of you!** **2/2** file(s) compiled with zero errors.
 >
 > Every green badge means you're one step closer to mastering programming.
 > Keep up the amazing work — you're doing great!
 
 ```
-✅ COMPILATION SUCCESSFUL
+✅ COMPILATION SUCCESSFUL — 2/2 passed
 ═══════════════════════════════════════════════════
 All Java files compiled without errors. Great job!
 ═══════════════════════════════════════════════════
@@ -81,10 +81,12 @@ git push origin perez-learning
 
 ## 📋 Your Exercises
 
+**2/2 exercises compiling ✅**
+
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
-| 1 | `exercises/exercise01_hello_world` | [`HelloWorld.java`](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise01_hello_world/HelloWorld.java) | — |
-| 2 | `exercises/exercise01_naming` | [`FavoriteMovie.java`](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise01_naming/FavoriteMovie.java) | — |
+| 1 | `exercises/exercise01_hello_world` | [HelloWorld.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise01_hello_world/HelloWorld.java) | ✅ |
+| 2 | `exercises/exercise01_naming` | [FavoriteMovie.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise01_naming/FavoriteMovie.java) | ✅ |
 
 ---
 
