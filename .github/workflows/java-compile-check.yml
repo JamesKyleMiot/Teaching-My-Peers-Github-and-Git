@@ -68,6 +68,7 @@ jobs:
             echo "Your code has errors. Fix them and push again."
             echo "═══════════════════════════════════════════════════"
             echo "compile_result=failure" >> $GITHUB_OUTPUT
+            exit 1
           fi
 
       - name: Generate Learning Branch README
