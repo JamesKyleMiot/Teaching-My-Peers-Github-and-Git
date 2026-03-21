@@ -6,6 +6,8 @@ on:
       - exercises
     paths:
       - 'exercises/**'
+      - '.github/templates/**'
+      - '.github/workflows/java-compile-check.yml'
 
 jobs:
   distribute:
@@ -28,7 +30,7 @@ jobs:
 
       - name: Distribute to all learning branches
         run: |
-          BRANCHES=("amper-learning" "apenas-learning" "miot-learning" "nelson-learning" "perez-learning" "raven-learning" "silva-learning")
+          BRANCHES=("amper-learning" "apenas-learning" "ericson-learning" "miot-learning" "nelson-learning" "perez-learning" "raven-learning" "remart-learning" "silva-learning")
           SUCCESS=0
           FAIL=0
 
