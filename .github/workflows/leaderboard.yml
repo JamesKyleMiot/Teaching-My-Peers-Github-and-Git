@@ -1,0 +1,214 @@
+name: Update Leaderboard
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Nightly at midnight UTC
+  workflow_dispatch:       # Manual trigger anytime
+
+jobs:
+  leaderboard:
+    name: Generate Leaderboard
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout full repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.ADMIN_PAT }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "Exercise Bot"
+          git config user.email "bot@github.com"
+
+      - name: Generate leaderboard data
+        id: leaderboard
+        run: |
+          BRANCHES=("amper-learning" "apenas-learning" "ericson-learning" "miot-learning" "nelson-learning" "perez-learning" "raven-learning" "remart-learning" "silva-learning")
+          TODAY=$(date -u +%Y-%m-%d)
+
+          # Collect data for each student
+          declare -A STUDENT_PASSED
+          declare -A STUDENT_TOTAL
+          declare -A STUDENT_STREAK
+          declare -A STUDENT_STATUS
+
+          for BRANCH in "${BRANCHES[@]}"; do
+            RAW_NAME=$(echo "$BRANCH" | sed 's/-learning//')
+            STUDENT_NAME="$(echo "${RAW_NAME:0:1}" | tr '[:lower:]' '[:upper:]')${RAW_NAME:1}"
+
+            echo "📊 Reading data for $BRANCH..."
+
+            # Fetch the branch
+            git fetch origin "$BRANCH" --quiet 2>/dev/null || {
+              echo "  ⚠️ Could not fetch $BRANCH, skipping"
+              STUDENT_PASSED[$BRANCH]=0
+              STUDENT_TOTAL[$BRANCH]=0
+              STUDENT_STREAK[$BRANCH]=0
+              STUDENT_STATUS[$BRANCH]="unknown"
+              continue
+            }
+
+            # Count exercise files on branch
+            TOTAL=$(git show "origin/$BRANCH:exercises" 2>/dev/null | grep -c "\.java$" || echo "0")
+
+            # Count passing exercises by compiling each file
+            PASSED=0
+            mkdir -p /tmp/classes_lb
+
+            while IFS= read -r filepath; do
+              [ -z "$filepath" ] && continue
+              git show "origin/$BRANCH:$filepath" > /tmp/exercise_check.java 2>/dev/null || continue
+              if javac -d /tmp/classes_lb /tmp/exercise_check.java 2>/dev/null; then
+                PASSED=$((PASSED + 1))
+              fi
+            done < <(git ls-tree -r --name-only "origin/$BRANCH" 2>/dev/null | grep "exercises/.*\.java$")
+
+            TOTAL=$(git ls-tree -r --name-only "origin/$BRANCH" 2>/dev/null | grep -c "exercises/.*\.java$" || echo "0")
+
+            # Calculate streak (look back up to 30 days)
+            STREAK=0
+            for i in $(seq 0 29); do
+              CHECK_DATE=$(python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$i)).isoformat())")
+              DAY_COMMITS=$(git log "origin/$BRANCH" --oneline \
+                --after="${CHECK_DATE}T00:00:00Z" --before="${CHECK_DATE}T23:59:59Z" \
+                --perl-regexp --author="^(?!Exercise Bot)" 2>/dev/null | wc -l | tr -d ' ')
+              if [ "$DAY_COMMITS" -gt 0 ]; then
+                STREAK=$((STREAK + 1))
+              elif [ $i -gt 0 ]; then
+                break
+              fi
+            done
+
+            STUDENT_PASSED[$BRANCH]=$PASSED
+            STUDENT_TOTAL[$BRANCH]=$TOTAL
+            STUDENT_STREAK[$BRANCH]=$STREAK
+
+            # Determine status label
+            if [ "$PASSED" -eq "$TOTAL" ] && [ "$TOTAL" -gt 0 ]; then
+              STUDENT_STATUS[$BRANCH]="✅ All passing"
+            elif [ "$PASSED" -gt 0 ]; then
+              STUDENT_STATUS[$BRANCH]="🔄 In progress"
+            else
+              STUDENT_STATUS[$BRANCH]="🆕 Getting started"
+            fi
+
+            echo "  ✅ $STUDENT_NAME: $PASSED/$TOTAL passing, streak=$STREAK"
+          done
+
+          # Sort branches by PASSED descending (simple bubble sort in bash)
+          SORTED_BRANCHES=("${BRANCHES[@]}")
+          N=${#SORTED_BRANCHES[@]}
+          for ((i=0; i<N-1; i++)); do
+            for ((j=0; j<N-i-1; j++)); do
+              A="${SORTED_BRANCHES[$j]}"
+              B="${SORTED_BRANCHES[$((j+1))]}"
+              if [ "${STUDENT_PASSED[$A]}" -lt "${STUDENT_PASSED[$B]}" ]; then
+                SORTED_BRANCHES[$j]="$B"
+                SORTED_BRANCHES[$((j+1))]="$A"
+              fi
+            done
+          done
+
+          # Build the leaderboard markdown table
+          MEDALS=("🥇" "🥈" "🥉" "4️⃣" "5️⃣" "6️⃣" "7️⃣" "8️⃣" "9️⃣")
+          UPDATED=$(date -u +"%Y-%m-%d %H:%M UTC")
+
+          TABLE="| Rank | Peer | Branch | 🔥 Streak | ✅ Progress | Status |"
+          TABLE="$TABLE
+          |:---:|:---|:---|:---:|:---:|:---|"
+
+          RANK=0
+          for BRANCH in "${SORTED_BRANCHES[@]}"; do
+            RAW_NAME=$(echo "$BRANCH" | sed 's/-learning//')
+            STUDENT_NAME="$(echo "${RAW_NAME:0:1}" | tr '[:lower:]' '[:upper:]')${RAW_NAME:1}"
+            MEDAL="${MEDALS[$RANK]}"
+            PASSED="${STUDENT_PASSED[$BRANCH]}"
+            TOTAL="${STUDENT_TOTAL[$BRANCH]}"
+            STREAK="${STUDENT_STREAK[$BRANCH]}"
+            STATUS="${STUDENT_STATUS[$BRANCH]}"
+
+            # Build mini progress bar (5 slots)
+            if [ "$TOTAL" -gt 0 ]; then
+              FILLED=$(( (PASSED * 5 + TOTAL - 1) / TOTAL ))
+              EMPTY=$((5 - FILLED))
+              BAR=""
+              for k in $(seq 1 $FILLED); do BAR="${BAR}█"; done
+              for k in $(seq 1 $EMPTY);  do BAR="${BAR}░"; done
+              PROGRESS="\`${BAR}\` ${PASSED}/${TOTAL}"
+            else
+              PROGRESS="*no exercises yet*"
+            fi
+
+            if [ "$STREAK" -gt 0 ]; then
+              STREAK_DISPLAY="🔥 ${STREAK}d"
+            else
+              STREAK_DISPLAY="—"
+            fi
+
+            TABLE="$TABLE
+          | $MEDAL | **${STUDENT_NAME}** | \`${BRANCH}\` | ${STREAK_DISPLAY} | ${PROGRESS} | ${STATUS} |"
+            RANK=$((RANK + 1))
+          done
+
+          TABLE="$TABLE
+
+          <sub>🤖 Auto-updated by GitHub Actions · Last run: ${UPDATED}</sub>"
+
+          # Save to file for next step
+          printf '%s\n' "$TABLE" > /tmp/leaderboard_table.txt
+          echo "✅ Leaderboard generated"
+
+      - name: Update main README with leaderboard
+        run: |
+          git checkout main
+
+          if [ ! -f README.md ]; then
+            echo "❌ README.md not found on main branch"
+            exit 1
+          fi
+
+          # Check markers exist
+          if ! grep -q "<!-- LEADERBOARD_START -->" README.md; then
+            echo "⚠️ Leaderboard markers not found in README.md"
+            echo "   Add <!-- LEADERBOARD_START --> and <!-- LEADERBOARD_END --> markers to README.md"
+            exit 0
+          fi
+
+          TABLE=$(cat /tmp/leaderboard_table.txt)
+
+          # Replace content between markers using Python
+          python3 << 'PYEOF'
+          import re
+
+          with open("README.md", "r") as f:
+              content = f.read()
+
+          with open("/tmp/leaderboard_table.txt", "r") as f:
+              table = f.read()
+
+          new_block = f"<!-- LEADERBOARD_START -->\n{table}\n<!-- LEADERBOARD_END -->"
+          updated = re.sub(
+              r"<!-- LEADERBOARD_START -->.*?<!-- LEADERBOARD_END -->",
+              new_block,
+              content,
+              flags=re.DOTALL
+          )
+
+          with open("README.md", "w") as f:
+              f.write(updated)
+
+          print("✅ README.md updated with new leaderboard")
+          PYEOF
+
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "📝 Leaderboard unchanged, nothing to push"
+          else
+            git commit -m "🏆 Update leaderboard [skip ci]"
+            git push origin main
+            echo "✅ Leaderboard pushed to main"
+          fi
