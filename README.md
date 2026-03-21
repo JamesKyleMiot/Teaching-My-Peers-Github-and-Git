@@ -8,16 +8,39 @@
 
 ---
 
-## ❌ Compilation Errors Found
+## ❌ Compilation Errors — 2/2 File(s) Failed
 
 Don't worry — **errors are how we learn!** Here's what went wrong:
 
+
+### `HelloWorld.java`
 ```
-./exercises/exercise01_hello_world/HelloWorld.java:15: error: ';' expected
+exercises/exercise01_hello_world/HelloWorld.java:15: error: ';' expected
         System.out.printl("Hello, World!")
                                           ^
 1 error
 ```
+
+### `FavoriteMovie.java`
+```
+exercises/exercise01_naming/FavoriteMovie.java:3: error: class favoritEmovie is public, should be declared in a file named favoritEmovie.java
+public class favoritEmovie {
+       ^
+exercises/exercise01_naming/FavoriteMovie.java:10: error: incompatible types: String cannot be converted to int
+        int age = "0";
+                  ^
+exercises/exercise01_naming/FavoriteMovie.java:12: error: incompatible types: int cannot be converted to boolean
+        boolean gender = 0;
+                         ^
+exercises/exercise01_naming/FavoriteMovie.java:14: error: cannot find symbol
+        System.out.println(Name);
+                           ^
+  symbol:   variable Name
+  location: class favoritEmovie
+4 errors
+```
+
+> 🔗 **[Open the failing file in github.dev](https://github.dev/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/ericson-learning/exercises/exercise01_hello_world/HelloWorld.java)** — fix it right in your browser!
 
 > 💪 **You got this!** Fix the errors above, commit, and push again.
 > The badge will turn green when your code compiles.
@@ -83,10 +106,12 @@ git push origin ericson-learning
 
 ## 📋 Your Exercises
 
+**0/2 exercises compiling ✅**
+
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
-| 1 | `exercises/exercise01_hello_world` | [`HelloWorld.java`](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/ericson-learning/exercises/exercise01_hello_world/HelloWorld.java) | — |
-| 2 | `exercises/exercise01_naming` | [`FavoriteMovie.java`](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/ericson-learning/exercises/exercise01_naming/FavoriteMovie.java) | — |
+| 1 | `exercises/exercise01_hello_world` | [HelloWorld.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/ericson-learning/exercises/exercise01_hello_world/HelloWorld.java) | ❌ |
+| 2 | `exercises/exercise01_naming` | [FavoriteMovie.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/ericson-learning/exercises/exercise01_naming/FavoriteMovie.java) | ❌ |
 
 ---
 
