@@ -8,7 +8,7 @@
 
 <p align="center">`██████████` **2/2** 🎉 All passing!</p>
 
-<p align="center"><em>🔥 **3-day streak** — you're building momentum!</em></p>
+<p align="center"><em>🔥 **2-day streak** — you're building momentum!</em></p>
 
 ---
 
