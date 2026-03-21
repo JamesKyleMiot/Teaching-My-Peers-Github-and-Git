@@ -8,7 +8,7 @@
 
 <p align="center">`░░░░░░░░░░` **0/2** exercises passing</p>
 
-<p align="center"><em>🔥 **3-day streak** — you're building momentum!</em></p>
+<p align="center"><em>🔥 **2-day streak** — you're building momentum!</em></p>
 
 ---
 
