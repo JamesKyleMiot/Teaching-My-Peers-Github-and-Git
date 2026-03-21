@@ -69,6 +69,8 @@ git push origin {{BRANCH_NAME}}
 
 ## 📋 Your Exercises
 
+{{EXERCISE_SUMMARY}}
+
 {{EXERCISE_TABLE}}
 
 ---
