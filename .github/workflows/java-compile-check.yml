@@ -121,17 +121,25 @@ jobs:
           echo "📝 Generating README for $STUDENT_NAME on $BRANCH..."
           echo "   Result: $COMPILE_RESULT ($PASSED/$TOTAL passed)"
 
-          # ── Streak calculation ──
+          # ── Streak calculation (only count genuine student commits) ──
           STREAK=0
           TODAY=$(date -u +%Y-%m-%d)
           for i in $(seq 0 29); do
             CHECK_DATE=$(date -u -d "$TODAY - $i days" +%Y-%m-%d 2>/dev/null || \
                          python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$i)).isoformat())")
-            NEXT_DATE=$(date -u -d "$TODAY - $((i-1)) days" +%Y-%m-%d 2>/dev/null || \
-                        python3 -c "import datetime; print((datetime.date.today() - datetime.timedelta(days=$((i-1)))).isoformat())")
-            DAY_COMMITS=$(git log --oneline \
+            # Count commits that:
+            #   - are NOT merge commits (--no-merges)
+            #   - are NOT from Exercise Bot
+            #   - do NOT have [skip ci] (bot README updates)
+            #   - do NOT mention 'distributed from exercises' (distribution merges)
+            DAY_COMMITS=$(git log --no-merges \
               --after="${CHECK_DATE}T00:00:00Z" --before="${CHECK_DATE}T23:59:59Z" \
-              --perl-regexp --author="^(?!Exercise Bot)" 2>/dev/null | wc -l | tr -d ' ')
+              --format="%ae|%s" 2>/dev/null \
+              | grep -v "bot@github.com" \
+              | grep -v "\[skip ci\]" \
+              | grep -v "distributed from exercises" \
+              | grep -v "^$" \
+              | wc -l | tr -d ' ')
             if [ "$DAY_COMMITS" -gt 0 ]; then
               STREAK=$((STREAK + 1))
             elif [ $i -gt 0 ]; then
