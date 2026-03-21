@@ -6,6 +6,8 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=perez-learning" alt="Build Status"/>
 </p>
 
+<p align="center">`██████████` **2/2** 🎉 All passing!</p>
+
 ---
 
 ## ✅ Great Job, Perez! All Exercises Compile!
@@ -81,7 +83,7 @@ git push origin perez-learning
 
 ## 📋 Your Exercises
 
-**2/2 exercises compiling ✅**
+**2/2 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
