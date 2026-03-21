@@ -78,7 +78,6 @@ jobs:
           RAW_NAME=$(echo "$BRANCH" | sed 's/-learning//')
           STUDENT_NAME="$(echo "${RAW_NAME:0:1}" | tr '[:lower:]' '[:upper:]')${RAW_NAME:1}"
           TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
-          TIMESTAMP_BADGE=$(date -u +"%Y---%m---%d%%20%H:%M%%20UTC")
           COMPILE_RESULT="${{ steps.compile.outputs.compile_result }}"
 
           echo "📝 Generating README for $STUDENT_NAME on $BRANCH..."
