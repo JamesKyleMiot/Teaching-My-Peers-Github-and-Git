@@ -17,10 +17,14 @@ jobs:
   compile-java:
     name: Compile Java
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.ADMIN_PAT || github.token }}
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -29,12 +33,14 @@ jobs:
           distribution: 'temurin'
 
       - name: Find and compile Java files
+        id: compile
         run: |
           echo "🔍 Searching for Java files..."
           JAVA_FILES=$(find . -name "*.java" -not -path "./.git/*" | head -100)
 
           if [ -z "$JAVA_FILES" ]; then
             echo "⚠️ No Java files found. Nothing to compile."
+            echo "compile_result=none" >> $GITHUB_OUTPUT
             exit 0
           fi
 
@@ -43,23 +49,147 @@ jobs:
           echo ""
 
           echo "🔨 Compiling..."
-          COMPILE_FAILED=0
+          mkdir -p /tmp/classes
 
-          # Compile all Java files together so they can reference each other
+          # Compile and capture output
           FILELIST=$(find . -name "*.java" -not -path "./.git/*")
-          javac -d /tmp/classes $FILELIST 2>&1 || COMPILE_FAILED=1
-
-          if [ $COMPILE_FAILED -eq 1 ]; then
-            echo ""
-            echo "❌ COMPILATION FAILED"
-            echo "═══════════════════════════════════════════════════"
-            echo "Your code has errors. Fix them and push again."
-            echo "═══════════════════════════════════════════════════"
-            exit 1
-          else
+          if javac -d /tmp/classes $FILELIST 2>/tmp/compile_errors.txt; then
             echo ""
             echo "✅ COMPILATION SUCCESSFUL"
             echo "═══════════════════════════════════════════════════"
             echo "All Java files compiled without errors. Great job!"
             echo "═══════════════════════════════════════════════════"
+            echo "compile_result=success" >> $GITHUB_OUTPUT
+          else
+            cat /tmp/compile_errors.txt
+            echo ""
+            echo "❌ COMPILATION FAILED"
+            echo "═══════════════════════════════════════════════════"
+            echo "Your code has errors. Fix them and push again."
+            echo "═══════════════════════════════════════════════════"
+            echo "compile_result=failure" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate Learning Branch README
+        if: always() && github.event_name == 'push'
+        run: |
+          BRANCH="${GITHUB_REF_NAME}"
+          # Extract student name: "amper-learning" -> "Amper"
+          RAW_NAME=$(echo "$BRANCH" | sed 's/-learning//')
+          STUDENT_NAME="$(echo "${RAW_NAME:0:1}" | tr '[:lower:]' '[:upper:]')${RAW_NAME:1}"
+          TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M UTC")
+          TIMESTAMP_BADGE=$(date -u +"%Y---%m---%d%%20%H:%M%%20UTC")
+          COMPILE_RESULT="${{ steps.compile.outputs.compile_result }}"
+
+          echo "📝 Generating README for $STUDENT_NAME on $BRANCH..."
+          echo "   Compile result: $COMPILE_RESULT"
+
+          # Build status section
+          if [ "$COMPILE_RESULT" == "success" ]; then
+            STATUS_SECTION=$(cat <<'SUCCESSEOF'
+          ## ✅ Great Job! Your Code Compiles Perfectly!
+
+          > 🎉 **I'm so proud of you!** Your code compiled with zero errors.
+          >
+          > Every green badge means you're one step closer to mastering programming.
+          > Keep up the amazing work — you're doing great!
+
+          ```
+          ✅ COMPILATION SUCCESSFUL
+          ═══════════════════════════════════════════════════
+          All Java files compiled without errors. Great job!
+          ═══════════════════════════════════════════════════
+          ```
+          SUCCESSEOF
+          )
+          elif [ "$COMPILE_RESULT" == "failure" ]; then
+            ERRORS=$(cat /tmp/compile_errors.txt 2>/dev/null | head -50 || echo "Compile error occurred. Check the Actions tab for details.")
+            STATUS_SECTION=$(cat <<FAILEOF
+          ## ❌ Compilation Errors Found
+
+          Don't worry — **errors are how we learn!** Here's what went wrong:
+
+          \`\`\`
+          $ERRORS
+          \`\`\`
+
+          > 💪 **You got this!** Fix the errors above, commit, and push again.
+          > The badge will turn green when your code compiles.
+          >
+          > **Stuck?** Ask Jan for help — that's what a trainer is for!
+          FAILEOF
+          )
+          else
+            STATUS_SECTION=$(cat <<'NONEEOF'
+          ## 📭 No Exercises Yet
+
+          > Hang tight! Jan hasn't pushed any exercises to your branch yet.
+          > When a new exercise arrives, you'll see it in the `exercises/` folder.
+          NONEEOF
+          )
+          fi
+
+          # Build exercise table
+          EXERCISE_TABLE="| # | Folder | File | Status |"
+          EXERCISE_TABLE="$EXERCISE_TABLE
+          |:--|:-------|:-----|:------:|"
+
+          COUNT=0
+          if [ -d "exercises" ]; then
+            while IFS= read -r f; do
+              COUNT=$((COUNT + 1))
+              FILENAME=$(basename "$f")
+              DIRNAME=$(dirname "$f" | sed 's|^\./||')
+              EXERCISE_TABLE="$EXERCISE_TABLE
+          | $COUNT | \`$DIRNAME\` | [\`$FILENAME\`](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/$BRANCH/$f) | — |"
+            done < <(find exercises/ -name "*.java" -not -path "./.git/*" 2>/dev/null | sort)
+          fi
+
+          if [ $COUNT -eq 0 ]; then
+            EXERCISE_TABLE="*No exercises found yet. They'll appear here when Jan pushes them!*"
+          fi
+
+          # Check if template exists
+          TEMPLATE=".github/templates/LEARNING_README.md"
+          if [ ! -f "$TEMPLATE" ]; then
+            echo "⚠️ Template not found at $TEMPLATE, skipping README generation"
+            exit 0
+          fi
+
+          # Generate README from template using Python for reliable multiline substitution
+          python3 << PYEOF
+          import datetime
+
+          with open("$TEMPLATE", "r") as f:
+              template = f.read()
+
+          status_section = """$STATUS_SECTION"""
+          exercise_table = """$EXERCISE_TABLE"""
+
+          readme = template
+          readme = readme.replace("{{STUDENT_NAME}}", "$STUDENT_NAME")
+          readme = readme.replace("{{BRANCH_NAME}}", "$BRANCH")
+          readme = readme.replace("{{TIMESTAMP}}", "$TIMESTAMP")
+          readme = readme.replace("{{TIMESTAMP_BADGE}}", "$TIMESTAMP_BADGE")
+          readme = readme.replace("{{STATUS_SECTION}}", status_section.strip())
+          readme = readme.replace("{{EXERCISE_TABLE}}", exercise_table.strip())
+
+          with open("README.md", "w") as f:
+              f.write(readme)
+
+          print("✅ README.md generated successfully")
+          PYEOF
+
+      - name: Push updated README
+        if: always() && github.event_name == 'push'
+        run: |
+          git config user.name "Exercise Bot"
+          git config user.email "bot@github.com"
+          git add README.md
+          if git diff --staged --quiet; then
+            echo "📝 README unchanged, nothing to push"
+          else
+            git commit -m "📊 Update README with build status [skip ci]"
+            git push
+            echo "✅ README pushed successfully"
           fi

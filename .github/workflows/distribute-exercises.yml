@@ -6,6 +6,8 @@ on:
       - exercises
     paths:
       - 'exercises/**'
+      - '.github/templates/**'
+      - '.github/workflows/java-compile-check.yml'
 
 jobs:
   distribute:
