@@ -12,6 +12,6 @@ package exercise01_hello_world;
 public class HelloWorld {
     public static void main(String[] args) {
         // BUG: Missing semicolon and a typo in println
-        System.out.printl("Hello, World!")
+        System.out.println("Hello, World!");
     }
 }
