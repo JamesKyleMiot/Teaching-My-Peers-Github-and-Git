@@ -6,11 +6,11 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=silva-learning" alt="Build Status"/>
 </p>
 
-<p align="center">`░░░░░░░░░░` **0/7** exercises passing</p>
+<p align="center">`█████░░░░░` **5/12** exercises passing</p>
 
 ---
 
-## ❌ Compilation Errors — 7/7 File(s) Failed
+## ❌ Compilation Errors — 7/12 File(s) Failed
 
 Don't worry — **errors are how we learn!** Here's what went wrong:
 
@@ -154,7 +154,7 @@ git push origin silva-learning
 
 ## 📋 Your Exercises
 
-**0/7 exercises compiling**
+**5/12 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
@@ -164,7 +164,12 @@ git push origin silva-learning
 | 4 | `exercises/exercise04_math` | [BasicMath.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise04_math/BasicMath.java) | ❌ |
 | 5 | `exercises/exercise05_strings` | [Greeting.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise05_strings/Greeting.java) | ❌ |
 | 6 | `exercises/exercise06_logic` | [AgeCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise06_logic/AgeCheck.java) | ❌ |
-| 7 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise07_loops/Counter.java) | ❌ |
+| 7 | `exercises/exercise07_if_else_basics` | [NumberCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise07_if_else_basics/NumberCheck.java) | ✅ |
+| 8 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise07_loops/Counter.java) | ❌ |
+| 9 | `exercises/exercise08_number_comparison` | [CompareNumbers.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise08_number_comparison/CompareNumbers.java) | ✅ |
+| 10 | `exercises/exercise09_positive_negative` | [SignCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise09_positive_negative/SignCheck.java) | ✅ |
+| 11 | `exercises/exercise10_maximum` | [FindMax.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise10_maximum/FindMax.java) | ✅ |
+| 12 | `exercises/exercise11_even_odd` | [EvenOrOdd.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/silva-learning/exercises/exercise11_even_odd/EvenOrOdd.java) | ✅ |
 
 ---
 
