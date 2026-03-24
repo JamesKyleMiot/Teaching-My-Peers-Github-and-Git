@@ -6,19 +6,19 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=perez-learning" alt="Build Status"/>
 </p>
 
-<p align="center">`██████████` **7/7** 🎉 All passing!</p>
+<p align="center">`██████████` **12/12** 🎉 All passing!</p>
 
 ---
 
 ## ✅ Great Job, Perez! All Exercises Compile!
 
-> 🎉 **I'm so proud of you!** **7/7** file(s) compiled with zero errors.
+> 🎉 **I'm so proud of you!** **12/12** file(s) compiled with zero errors.
 >
 > Every green badge means you're one step closer to mastering programming.
 > Keep up the amazing work — you're doing great!
 
 ```
-✅ COMPILATION SUCCESSFUL — 7/7 passed
+✅ COMPILATION SUCCESSFUL — 12/12 passed
 ═══════════════════════════════════════════════════
 All Java files compiled without errors. Great job!
 ═══════════════════════════════════════════════════
@@ -83,7 +83,7 @@ git push origin perez-learning
 
 ## 📋 Your Exercises
 
-**7/7 exercises compiling**
+**12/12 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
@@ -93,7 +93,12 @@ git push origin perez-learning
 | 4 | `exercises/exercise04_math` | [BasicMath.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise04_math/BasicMath.java) | ✅ |
 | 5 | `exercises/exercise05_strings` | [Greeting.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise05_strings/Greeting.java) | ✅ |
 | 6 | `exercises/exercise06_logic` | [AgeCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise06_logic/AgeCheck.java) | ✅ |
-| 7 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise07_loops/Counter.java) | ✅ |
+| 7 | `exercises/exercise07_if_else_basics` | [NumberCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise07_if_else_basics/NumberCheck.java) | ✅ |
+| 8 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise07_loops/Counter.java) | ✅ |
+| 9 | `exercises/exercise08_number_comparison` | [CompareNumbers.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise08_number_comparison/CompareNumbers.java) | ✅ |
+| 10 | `exercises/exercise09_positive_negative` | [SignCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise09_positive_negative/SignCheck.java) | ✅ |
+| 11 | `exercises/exercise10_maximum` | [FindMax.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise10_maximum/FindMax.java) | ✅ |
+| 12 | `exercises/exercise11_even_odd` | [EvenOrOdd.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/perez-learning/exercises/exercise11_even_odd/EvenOrOdd.java) | ✅ |
 
 ---
 
