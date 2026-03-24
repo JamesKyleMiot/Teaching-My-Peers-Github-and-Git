@@ -6,11 +6,11 @@
   <img src="https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/actions/workflows/java-compile-check.yml/badge.svg?branch=apenas-learning" alt="Build Status"/>
 </p>
 
-<p align="center">`█████░░░░░` **5/12** exercises passing</p>
+<p align="center">`░░░░░░░░░░` **0/12** exercises passing</p>
 
 ---
 
-## ❌ Compilation Errors — 7/12 File(s) Failed
+## ❌ Compilation Errors — 12/12 File(s) Failed
 
 Don't worry — **errors are how we learn!** Here's what went wrong:
 
@@ -80,11 +80,93 @@ exercises/exercise06_logic/AgeCheck.java:8: error: incompatible types: int canno
 1 error
 ```
 
+### `NumberCheck.java`
+```
+exercises/exercise07_if_else_basics/NumberCheck.java:10: error: unclosed string literal
+            System.out.println("Gre
+                               ^
+exercises/exercise07_if_else_basics/NumberCheck.java:14: error: reached end of file while parsing
+}
+ ^
+2 errors
+```
+
 ### `Counter.java`
 ```
 exercises/exercise07_loops/Counter.java:6: error: ';' expected
         for (int i = 1; i <= 5 i++) {
                               ^
+1 error
+```
+
+### `CompareNumbers.java`
+```
+exercises/exercise08_number_comparison/CompareNumbers.java:11: error: ';' expected
+            System.out.println("a is greater")
+                                              ^
+exercises/exercise08_number_comparison/CompareNumbers.java:12: error: '(' expected
+        } else if ? {
+                 ^
+exercises/exercise08_number_comparison/CompareNumbers.java:12: error: illegal start of expression
+        } else if ? {
+                  ^
+exercises/exercise08_number_comparison/CompareNumbers.java:12: error: illegal start of expression
+        } else if ? {
+                    ^
+exercises/exercise08_number_comparison/CompareNumbers.java:13: error: ';' expected
+            System.out.println("b is greater or equal")
+                                                       ^
+exercises/exercise08_number_comparison/CompareNumbers.java:15: error: reached end of file while parsing
+}
+ ^
+6 errors
+```
+
+### `SignCheck.java`
+```
+exercises/exercise09_positive_negative/SignCheck.java:10: error: ')' expected
+        if (num !> 0) {
+               ^
+exercises/exercise09_positive_negative/SignCheck.java:10: error: illegal start of expression
+        if (num !> 0) {
+                 ^
+exercises/exercise09_positive_negative/SignCheck.java:10: error: ';' expected
+        if (num !> 0) {
+                    ^
+exercises/exercise09_positive_negative/SignCheck.java:11: error: ';' expected
+            System.out.println("Positive")
+                                          ^
+exercises/exercise09_positive_negative/SignCheck.java:13: error: ';' expected
+            System.out.println("Negative")
+                                          ^
+exercises/exercise09_positive_negative/SignCheck.java:15: error: ';' expected
+            System.out.println("Zero")
+                                      ^
+exercises/exercise09_positive_negative/SignCheck.java:14: error: 'else' without 'if'
+        } else
+          ^
+7 errors
+```
+
+### `FindMax.java`
+```
+exercises/exercise10_maximum/FindMax.java:10: error: ';' expected
+            System.out.println(x)
+                                 ^
+exercises/exercise10_maximum/FindMax.java:12: error: ';' expected
+            System.out.println(y)
+                                 ^
+exercises/exercise10_maximum/FindMax.java:14: error: reached end of file while parsing
+}
+ ^
+3 errors
+```
+
+### `EvenOrOdd.java`
+```
+exercises/exercise11_even_odd/EvenOrOdd.java:10: error: 'else' without 'if'
+            else
+            ^
 1 error
 ```
 
@@ -154,7 +236,7 @@ git push origin apenas-learning
 
 ## 📋 Your Exercises
 
-**5/12 exercises compiling**
+**0/12 exercises compiling**
 
 | # | Folder | File | Status |
 |:--|:-------|:-----|:------:|
@@ -164,12 +246,12 @@ git push origin apenas-learning
 | 4 | `exercises/exercise04_math` | [BasicMath.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise04_math/BasicMath.java) | ❌ |
 | 5 | `exercises/exercise05_strings` | [Greeting.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise05_strings/Greeting.java) | ❌ |
 | 6 | `exercises/exercise06_logic` | [AgeCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise06_logic/AgeCheck.java) | ❌ |
-| 7 | `exercises/exercise07_if_else_basics` | [NumberCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise07_if_else_basics/NumberCheck.java) | ✅ |
+| 7 | `exercises/exercise07_if_else_basics` | [NumberCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise07_if_else_basics/NumberCheck.java) | ❌ |
 | 8 | `exercises/exercise07_loops` | [Counter.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise07_loops/Counter.java) | ❌ |
-| 9 | `exercises/exercise08_number_comparison` | [CompareNumbers.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise08_number_comparison/CompareNumbers.java) | ✅ |
-| 10 | `exercises/exercise09_positive_negative` | [SignCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise09_positive_negative/SignCheck.java) | ✅ |
-| 11 | `exercises/exercise10_maximum` | [FindMax.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise10_maximum/FindMax.java) | ✅ |
-| 12 | `exercises/exercise11_even_odd` | [EvenOrOdd.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise11_even_odd/EvenOrOdd.java) | ✅ |
+| 9 | `exercises/exercise08_number_comparison` | [CompareNumbers.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise08_number_comparison/CompareNumbers.java) | ❌ |
+| 10 | `exercises/exercise09_positive_negative` | [SignCheck.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise09_positive_negative/SignCheck.java) | ❌ |
+| 11 | `exercises/exercise10_maximum` | [FindMax.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise10_maximum/FindMax.java) | ❌ |
+| 12 | `exercises/exercise11_even_odd` | [EvenOrOdd.java](https://github.com/Rust-Frog/Teaching-My-Peers-Github-and-Git/blob/apenas-learning/exercises/exercise11_even_odd/EvenOrOdd.java) | ❌ |
 
 ---
 
